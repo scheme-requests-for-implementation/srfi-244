@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SRFI 244: Multiple-value Definitions</title>
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
+    <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"></head>
+  <body>
+    <h1><a href="https://srfi.schemers.org/"><img class="srfi-logo" src="https://srfi.schemers.org/srfi-logo.svg" alt="SRFI surfboard logo" /></a>244: Multiple-value Definitions</h1>
+
+    <p>by Marc Nieper-Wißkirchen</p>
+
+    <h2 id="status">Status</h2>
+
+    <p style="color: red;">For editor's use only.  Please do not edit this section.</p>
+
+    <p>??? the draft/final/withdrawn status of the SRFI, information on how
+      to subscribe to its mailing list, and important dates in its history.
+      The editor will add this section.</p>
+
+    <h2 id="abstract">Abstract</h2>
+
+    <p>A <code>define-values</code> form is a definition, which binds
+      multiple variables from a single expression returning multiple
+      values.</p>
+
+    <h2 id="rationale">Rationale</h2>
+
+    <p>This SRFI makes the <code>define-values</code> definition,
+      which was standardized in R<sup>7</sup>RS, available to
+      R<sup>6</sup>RS systems.</p>
+
+    <p>It is preferable for <code>define-values</code> to be
+      implemented in the Scheme system's core so that modifications of
+      an algorithm like the one described
+      in <a href="#fixing-letrec-reloaded"><cite>Fixing Letrec
+          (reloaded)</cite></a> can be employed to
+      implement <code>define-values</code> definitions as effectively
+      as other internal variable definitions.</p>
+
+    <h2 id="specification">Specification</h2>
+
+    <p>This specification describes the <code>(srfi :244)</code>
+      and <code>(srfi :244 define-values)</code> libraries.</p>
+
+    <p>The <code>define-values</code> form described in this specification is
+      a <code>&lang;definition&rang;</code> and may appear anywhere
+      other definitions may appear.</p>
+
+    <p><code>(define-values &lang;formals&rang; &lang;expression&rang;)</code></p>
+
+    <p><i>Syntax:</i> Any variable must not appear more than once in
+      the set of <code>&lang;formals&rang;</code>.</p>
+
+    <p><i>Semantics:</i> The variables occurring in
+      the <code>&lang;formals&rang;</code> are bound to fresh
+      locations containing the values returned by
+      the <code>&lang;expression&rang;</code>, where
+      the <code>&lang;formals&rang;</code> are matched to the return
+      values in the same way that the <code>&lang;formals&rang;</code>
+      in a <code>lambda</code> expression are matched to the arguments
+      in a procedure call.  The effect of the <code>&lang;formals&rang;</code>
+      not matching is undefined.</p>
+
+    <p>The continuation of <code>&lang;expression&rang;</code> should
+      not be invoked more than once.</p>
+
+    <pre>    (define-values (x y)
+      (values 1 2))
+    (+ 1 2)                  &xrArr; 3
+
+    (define-values (a . b)
+      (values 1 2))
+    (cons a b)               &xrArr; (1 2)</pre>
+
+    <h2 id="implementation">Implementation</h2>
+
+    <p>The sample implementation of <code>define-values</code> makes
+      use of identifier macros to implement the bound variables.  It
+      should be more efficient than the reference implementation in
+      R<sup>7</sup>RS.</p>
+
+    <p><a href="lib/srfi/:244.sls">Sample implementation as a portable R<sup>6</sup>RS library.</a></p>
+
+    <h2 id="acknowledgements">Acknowledgements</h2>
+
+    <p>The form described in this SRFI has been well-known for a long time.</p>
+
+    <h2>References</h2>
+
+    <ol>
+      <li><p><a name="#fixing-letrec-reloaded">Abdulaziz Ghuloum and
+            R. Kent
+            Dybvig. <a href="http://www.cs.indiana.edu/~dyb/pubs/letrec-reloaded.pdf">Fixing
+            letrec (reloaded)</a>. In <i>Proceedings of the 2009
+            Workshop on Scheme and Functional Programming</i>,
+            57&ndash;65, 2009.</a></p>
+      </li>
+    </ol>
+
+    <h2 id="copyright">Copyright</h2>
+    <p>&copy; 2022 Marc Nieper-Wißkirchen.</p>
+
+    <p>
+      Permission is hereby granted, free of charge, to any person
+      obtaining a copy of this software and associated documentation files
+      (the "Software"), to deal in the Software without restriction,
+      including without limitation the rights to use, copy, modify, merge,
+      publish, distribute, sublicense, and/or sell copies of the Software,
+      and to permit persons to whom the Software is furnished to do so,
+      subject to the following conditions:</p>
+
+    <p>
+      The above copyright notice and this permission notice (including the
+      next paragraph) shall be included in all copies or substantial
+      portions of the Software.</p>
+    <p>
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+      NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+      BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+      ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+      CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      SOFTWARE.</p>
+
+    <hr>
+    <address>Editor: <a href="mailto:srfi-editors+at+srfi+dot+schemers+dot+org">Arthur A. Gleckler</a></address></body></html>
