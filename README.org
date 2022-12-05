@@ -1,0 +1,22 @@
+
+* SRFI 244: Multiple-value Definitions
+
+** by Marc Nieper-Wißkirchen
+
+
+
+keywords: [[https://srfi.schemers.org/?keywords=binding][Binding]], [[https://srfi.schemers.org/?keywords=multiple-value-returns][Multiple-Value Returns]]
+
+library-name: define-values
+
+This repository hosts [[https://srfi.schemers.org/srfi-244/][SRFI 244]]: Multiple-value Definitions, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
+
+This SRFI is in /draft/ status.
+
+The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-244/srfi-244.html][SRFI Document]].
+
+If you'd like to participate in the discussion of this SRFI, or report issues with it, please [[https://srfi.schemers.org/srfi-244/][join the SRFI-244 mailing list]] and send your message there.
+
+Thank you.
+
+[[mailto:srfi-editors@srfi.schemers.org][The SRFI Editors]]
