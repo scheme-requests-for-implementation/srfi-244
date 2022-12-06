@@ -83,17 +83,17 @@
 
     <h2 id="implementation">Implementation</h2>
 
-    <p>The sample implementation of <code>define-values</code> makes
-      use of identifier macros to implement the bound variables.  It
-      should be more efficient than the sample implementation in
-      R<sup>7</sup>RS.</p>
-
     <p><a href="https://github.com/scheme-requests-for-implementation/srfi-244/tree/master/lib/srfi/:244.sls">Sample
       implementation as a portable R<sup>6</sup>RS library</a></p>
 
     <h2 id="acknowledgements">Acknowledgements</h2>
 
     <p>The form described in this SRFI has been well-known for a long time.</p>
+
+    <p>I would like to thank Jim Rees for pointing out to me that the
+      original sample implementation violated the R<sup>6</sup>RS
+      requirement that it is a syntax violation to
+      use <code>set!</code> with exported variables.</p>
 
     <h2>References</h2>
 

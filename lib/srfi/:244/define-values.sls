@@ -62,13 +62,8 @@
            #'(begin
                (define tmp (let-values ([formals expr])
                              (vector id ...)))
-               (define-syntax id
-                 (identifier-syntax
-                  [_
-                   (vector-ref tmp i)]
-                  [(set! _ e)
-                   (vector-set! tmp i e)]))
-               ...))]
+	       (define id (vector-ref tmp i))
+	       ...))]
         [_
          (syntax-violation who "invalid syntax" stx)])))
 
