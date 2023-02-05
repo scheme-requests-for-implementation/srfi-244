@@ -11,7 +11,7 @@ library-name: define-values
 
 This repository hosts [[https://srfi.schemers.org/srfi-244/][SRFI 244]]: Multiple-value Definitions, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
-This SRFI is in /draft/ status.
+This SRFI is in /final/ status.
 
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-244/srfi-244.html][SRFI Document]].
 
